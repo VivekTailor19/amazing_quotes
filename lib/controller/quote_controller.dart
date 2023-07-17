@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:quotopia/model/quote_model.dart';
 
+
 class QuoteController extends GetxController
 {
   List<QuoteModel> quoteList = [
