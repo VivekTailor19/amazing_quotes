@@ -88,10 +88,28 @@ class Quote_DB_Helper
     database!.delete(dbCategoryTable , where: "id=?", whereArgs:[delID] );
   }
 
+  Future<void> deleteInQuoteTABLE(int delID)
+  async {
+    database = await checkDB();
+
+    database!.delete(dbQuoteTable , where: "id=?", whereArgs:[delID] );
+  }
+
   Future<void> updateInCategoryTABLE({id, category})
   async {
     database = await checkDB();
     database!.update(dbCategoryTable,{'category':category}, where: "id=?",whereArgs: [id]);
+  }
+
+  Future<void> updateInQuoteTABLE(QuoteModel model)
+  async {
+    database = await checkDB();
+    database!.update(dbQuoteTable,{
+      "category":model.category,
+      "author":model.author,
+      "quote": model.quote,
+      'fav':model.fav
+    }, where: "id=?",whereArgs: [model.id]);
   }
 
 

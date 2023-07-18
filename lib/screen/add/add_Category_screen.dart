@@ -14,16 +14,114 @@ class Add_Category_Screen extends StatefulWidget {
 
 class _Add_Category_ScreenState extends State<Add_Category_Screen> {
 
+  TextEditingController tcategory = TextEditingController();
 
-
-
+  QuoteController control = Get.put(QuoteController());
 
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        SizedBox(height: 3.h,),
+        CustomTextField(hint: "Category",controller: tcategory,kboard: TextInputType.text),
+        SizedBox(height: 1.5.h,),
+        GestureDetector(
+          onTap: () {
+            Quote_DB_Helper.quote_db_helper.insertCategory(tcategory.text);
+            control.loadCategoryDB();
+            tcategory.clear();
+          },
+          child: Container(height: 60,width: 150,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff0A1172)),
+            alignment: Alignment.center,
+            child: Text("Add Category",style: TextStyle(fontSize: 15.sp,color: Colors.white,fontWeight: FontWeight.w400),),
+          ),
+        ),
+        SizedBox(height: 3.h,),
+        control.categoryList != null
+            ? Expanded(
+          child: Obx(
+                () =>  ListView.builder(
+              itemCount: control.categoryList.length,
+              itemBuilder: (context, index) {
+
+                return Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 5,vertical: 4),
+                  child: GestureDetector(
+                    onTap: () {
+                      tcategory.text = control.categoryList[index]['category'];
+
+                      Get.defaultDialog(title: "Update Category",content: Column(
+                        children: [
+                          SizedBox(height: 1.5.h,),
+                          CustomTextField(hint: "Category",kboard: TextInputType.text,controller: tcategory),
+                          SizedBox(height: 2.h,),
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IconButton(onPressed: () async {
+
+                                Quote_DB_Helper.quote_db_helper.deleteInCategoryTABLE(control.categoryList[index]['id']);
+                                control.loadCategoryDB();
+                                Get.back();
+
+                              }, icon: Icon(Icons.delete_outline_rounded),iconSize: 30.sp,color: Colors.red,),
+
+
+                              IconButton(onPressed: () async {
+                                await Quote_DB_Helper.quote_db_helper.updateInCategoryTABLE(
+                                    id: control.categoryList[index]['id'],
+                                    category: tcategory.text);
+
+                                control.loadCategoryDB();
+                                Get.back();
+
+                              }, icon: Icon(Icons.security_update_good_rounded),iconSize: 30.sp,color: Colors.green,)
+                            ],
+                          )
+                        ],
+                      ));
+                    },
+                    child: Container(height: 60,width: 100.w,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(3.w),color: Colors.indigo.shade400),
+                      child: Row(children: [
+                        Text("${index + 1}",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                        SizedBox(width: 15,),
+                        Text("${control.categoryList[index]['category']}",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                      ],),
+
+                    ),
+                  ),
+                );
+
+              },),
+          ),
+        )
+            : Container(),
+
+
+
+      ],
+    );
   }
 
+  Padding CustomTextField({controller,hint,kboard}) {
+    return Padding(
+      padding:  EdgeInsets.all(10),
+      child: TextField(
+        style: TextStyle(color: Color(0xff0A1172),fontSize: 16),
+        keyboardType: kboard,
+        controller: controller,
+        decoration: InputDecoration(
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            label: Text("Enter $hint",style: TextStyle(color: Color(0xff0A1172)),),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff0A1172),width: 1.5),borderRadius: BorderRadius.circular(10)),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1),borderRadius: BorderRadius.circular(10)),
+            enabled: true
 
+        ),
+      ),
+    );
+  }
 
 }

@@ -6,12 +6,14 @@ import 'package:quotopia/utils/quote_db_helper.dart';
 class QuoteController extends GetxController
 {
  RxList categoryList = [].obs;
+ RxList quoteList = [].obs;
  Future<void> loadCategoryDB()
  async {
   categoryList.value = await Quote_DB_Helper.quote_db_helper.readCategoryTABLE();
+  quoteList.value = await Quote_DB_Helper.quote_db_helper.readQuoteTABLE();
  }
-  
-  
+
+ RxString selCategory = "".obs;
   
 
 }
