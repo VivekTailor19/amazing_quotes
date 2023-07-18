@@ -32,7 +32,8 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
           SizedBox(height: 3.h,),
 
           CustomTextField(hint: "Quote",controller: tquote,kboard: TextInputType.text),
-          CustomTextField(hint: "Category",controller: tcategory,kboard: TextInputType.text),
+
+
           CustomTextField(hint: "Author",controller: tauthor,kboard: TextInputType.text),
           CustomTextField(hint: "Favorite",controller: tauthor,kboard: TextInputType.text),
 
