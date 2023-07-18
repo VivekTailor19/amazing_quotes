@@ -28,11 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
           leading: IconButton(icon: Icon(Icons.refresh_rounded),iconSize: 25,
             onPressed: () async {
 
-              control.convertDATA();
+              // control.convertDATA();
             // control.quoteList.map((e) async => await Quote_DB_Helper.quote_db_helper.insertInDB(
             //     QuoteModel(category: e.category,quote: e.quote,fav: e.fav))).toList();
 
           },),
+
+          actions: [
+            IconButton(onPressed: () {
+              Get.toNamed("/add");
+            }, icon: Icon(Icons.add_card_rounded))
+          ],
         ),
 
         body: Padding(

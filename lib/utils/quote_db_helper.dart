@@ -8,12 +8,14 @@ import 'package:sqflite/sqlite_api.dart';
 
 class Quote_DB_Helper
 {
-  static Quote_DB_Helper quote_db_helper = Quote_DB_Helper();
+  static Quote_DB_Helper quote_db_helper = Quote_DB_Helper._();
+  Quote_DB_Helper._();
 
   Database? database;
 
-  final dbPath = "quote.db";
-  final dbName = "quoteTable";
+  final dbFile = "dbFile.db";
+  final dbCategoryTable = "categoryTable";
+  final dbQuoteTable = "quoteTable";
 
   Future<Database?> checkDB()
   async {
@@ -30,19 +32,28 @@ class Quote_DB_Helper
   Future<Database> builtDB()
   async {
     Directory dir = await getApplicationDocumentsDirectory();
-    String path = join(dir.path,dbPath);
-    String query = 'CREATE TABLE $dbName (ID INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT, author TEXT, quote TEXT, fav TEXT)' ;
+    String path = join(dir.path,dbFile);
+    String catQuery = 'CREATE TABLE $dbCategoryTable (id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT)' ;
+    String quoteQuery = 'CREATE TABLE $dbQuoteTable (id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT, author TEXT, quote TEXT, fav TEXT)' ;
 
     return await openDatabase(path,version:1,
     onCreate: (db, version) async {
-      return await db.execute(query);
+       await db.execute(catQuery);
+       await db.execute(quoteQuery);
     },);
   }
 
-  Future<void> insertInDB(QuoteModel model)
+
+  Future<void> insertCategory(String category)
   async {
     database = await checkDB();
-    await database!.insert(dbName,
+    await database!.insert(dbCategoryTable, {"category":category});
+  }
+
+  Future<void> insertQuote(QuoteModel model)
+  async {
+    database = await checkDB();
+    await database!.insert(dbQuoteTable,
         {
           "category":model.category,
           "author":model.author,
@@ -50,6 +61,37 @@ class Quote_DB_Helper
           'fav':model.fav
         }
     );
+  }
+
+
+  Future<List<Map>> readCategoryTABLE()
+  async {
+    database = await checkDB();
+    String query = 'SELECT * FROM $dbCategoryTable';
+    List<Map> list = await database!.rawQuery(query);
+    print("list ==== $list");
+    return list;
+  }
+
+  Future<List<Map>> readQuoteTABLE()
+  async {
+    database = await checkDB();
+    String query = 'SELECT * FROM $dbQuoteTable';
+    List<Map> list = await database!.rawQuery(query);
+    return list;
+  }
+
+  Future<void> deleteInCategoryTABLE(int delID)
+  async {
+    database = await checkDB();
+
+    database!.delete(dbCategoryTable , where: "id=?", whereArgs:[delID] );
+  }
+
+  Future<void> updateInCategoryTABLE({id, category})
+  async {
+    database = await checkDB();
+    database!.update(dbCategoryTable,{'category':category}, where: "id=?",whereArgs: [id]);
   }
 
 

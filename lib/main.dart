@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quotopia/screen/add/add_Screen.dart';
 import 'package:quotopia/screen/home_Screen.dart';
 import 'package:quotopia/screen/splash_Screen.dart';
 import 'package:sizer/sizer.dart';
@@ -11,7 +12,8 @@ void main() {
         debugShowCheckedModeBanner: false,
         routes: {
           "/":(p0) => SplashScreen(),
-          "/home": (p0) => HomeScreen()
+          "/home": (p0) => HomeScreen(),
+          "/add":(p0) => Add_Screen(),
 
         },
       ),

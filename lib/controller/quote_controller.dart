@@ -1,9 +1,62 @@
 import 'package:get/get.dart';
 import 'package:quotopia/model/quote_model.dart';
+import 'package:quotopia/utils/quote_db_helper.dart';
 
 
 class QuoteController extends GetxController
 {
+ RxList categoryList = [].obs;
+ Future<void> loadCategoryDB()
+ async {
+  categoryList.value = await Quote_DB_Helper.quote_db_helper.readCategoryTABLE();
+ }
+  
+  
+  
+
+}
+
+
+
+
+
+
+
+
+/*
+
+book ==>  Shreemad bhagwad geeta.
+Categories ==>>     success, passion, business, self_development, life, believe
+Author    ==>>      Swami Vivekanand, Abdul Kalam, Sardar Patel, Chanakya,
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
   List<QuoteModel> quoteList = [
  QuoteModel(category: 'Success',author: 'Jack In',quote: 'Believe and act as if it were impossible to fail.',fav: "No"),
  QuoteModel(category: 'Positivity',author: 'Mehmet D',quote: 'What you do speaks so loudly that I cannot hear what you say.',fav: "No"),
@@ -221,29 +274,11 @@ class QuoteController extends GetxController
          {
           auth = "Li Gabriel";
          }
-       
+
         print('QuoteModel(category: \'$cate\',author: \'$auth\',quote: \'${tempDATA[i]}\',fav: "No"),');
         cate = "";
 
       }
   }
-  
-  
-  
-
-}
-
-
-
-
-
-
-
-
-/*
-
-book ==>  Shreemad bhagwad geeta.
-Categories ==>>     success, passion, business, self_development, life, believe
-Author    ==>>      Swami Vivekanand, Abdul Kalam, Sardar Patel, Chanakya,
 
 */
