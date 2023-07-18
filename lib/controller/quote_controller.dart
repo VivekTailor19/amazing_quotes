@@ -11,6 +11,7 @@ class QuoteController extends GetxController
  async {
   categoryList.value = await Quote_DB_Helper.quote_db_helper.readCategoryTABLE();
   quoteList.value = await Quote_DB_Helper.quote_db_helper.readQuoteTABLE();
+  print("quote list length ==>> ${quoteList.length}");
  }
 
  RxString selCategory = "".obs;
