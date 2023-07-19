@@ -31,6 +31,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
             Quote_DB_Helper.quote_db_helper.insertCategory(tcategory.text);
             control.loadCategoryDB();
             tcategory.clear();
+            control.onlyReloadCategories();
           },
           child: Container(height: 60,width: 150,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff0A1172)),

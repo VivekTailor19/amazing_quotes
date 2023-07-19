@@ -14,7 +14,22 @@ class QuoteController extends GetxController
   print("quote list length ==>> ${quoteList.length}");
  }
 
- RxString selCategory = "".obs;
+ RxString selCategory = "hii".obs;
+ RxList categories = [].obs;
+
+ void onlyReloadCategories()
+ {
+  String temp = "";
+  List list = [];
+  for(int i = 0; i < categoryList.length  ; i++)
+   {
+     temp = categoryList[i]['category'] ;
+     list.add(temp);
+   }
+  categories.value = list;
+  print("categories   ===>>>>>>>>>>>>>>> ${categories.length}");
+ }
+
   
 
 }

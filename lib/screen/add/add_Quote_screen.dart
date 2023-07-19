@@ -15,8 +15,9 @@ class Add_Quote_Screen extends StatefulWidget {
 
 class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
 
+
   TextEditingController tquote = TextEditingController();
-  TextEditingController tcategory = TextEditingController();
+  // TextEditingController tcategory = TextEditingController();
   TextEditingController tauthor = TextEditingController();
 
   QuoteController control = Get.put(QuoteController());
@@ -34,6 +35,40 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
           CustomTextField(hint: "Quote",controller: tquote,kboard: TextInputType.text),
 
 
+               Obx(
+              () =>     Container(
+              height: 8.h,
+              width: 100.w,
+              alignment: Alignment.center,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color:Color(0xff0A1172))),
+              child: DropdownButton(
+                  borderRadius: BorderRadius.circular(10),
+
+                  // dropdownColor: Colors.amber,
+                  isExpanded: true,
+                  icon: Icon(Icons.expand_more_rounded),
+                  underline: Container(),
+
+                  value: control.selCategory.value,
+                  items: control.categories
+                      .map((e) => DropdownMenuItem(
+                      value: e,
+                      child: Text("${e}",style: TextStyle(color: Color(0xff0A1172),fontSize: 16),),
+                      alignment: Alignment.centerLeft))
+                      .toList(),
+                  onChanged: (value) {
+                    control.selCategory.value = value as String;
+                  },
+              ),
+            ),
+               ),
+
+
+
           CustomTextField(hint: "Author",controller: tauthor,kboard: TextInputType.text),
           CustomTextField(hint: "Favorite",controller: tauthor,kboard: TextInputType.text),
 
@@ -41,14 +76,14 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
             onTap: () {
               QuoteModel model = QuoteModel(
                 quote: tquote.text,
-                category: tcategory.text,
+                category: "",
                 author: tauthor.text,
                 fav: 'No'
               );
               Quote_DB_Helper.quote_db_helper.insertQuote(model);
               control.loadCategoryDB();
               tquote.clear();
-              tcategory.clear();
+
               tauthor.clear();
               print("quote list length ==>> ${control.quoteList.length}");
             },
