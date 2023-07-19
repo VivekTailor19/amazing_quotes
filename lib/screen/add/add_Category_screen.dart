@@ -74,6 +74,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
                                     category: tcategory.text);
 
                                 control.loadCategoryDB();
+                                tcategory.clear();
                                 Get.back();
 
                               }, icon: Icon(Icons.security_update_good_rounded),iconSize: 30.sp,color: Colors.green,)

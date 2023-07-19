@@ -78,7 +78,7 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
             onTap: () {
               QuoteModel model = QuoteModel(
                 quote: tquote.text,
-                category: "",
+                category: control.selCategory.value,
                 author: tauthor.text,
                 fav: 'No'
               );
