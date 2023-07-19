@@ -14,7 +14,12 @@ class QuoteController extends GetxController
   print("quote list length ==>> ${quoteList.length}");
  }
 
- RxString selCategory = "hii".obs;
+ Future<void> loadCategoryData()
+ async {
+  quoteList.value = await Quote_DB_Helper.quote_db_helper.readQuoteTABLE();
+ }
+
+ RxString selCategory = "".obs;
 
  List<String> imgList = [
   "assets/images/slider (1).jpg",

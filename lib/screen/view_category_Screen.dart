@@ -11,12 +11,12 @@ class View_Category_Screen extends StatefulWidget {
 
 class _View_Category_ScreenState extends State<View_Category_Screen> {
 
-  // String title = "";
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   title = Get.arguments;
-  // }
+  String title = "";
+  @override
+  void initState() {
+    super.initState();
+    title = Get.arguments;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
-            //title: Text("$title",style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.w600),)
+            title: Text("$title",style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.w600),)
         ),
 
         body: ListView.builder(
@@ -53,10 +53,11 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
      child: Column(
        children: [
          SizedBox(height: 1.h,),
-         Text("sdfsdf\nsfdsd]f\msdf\nsfs\nf",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),maxLines: 5,overflow: TextOverflow.ellipsis,),
+         Text("sdfsdf\nsfdsd]f\msdf\nsfs\nf",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),maxLines: 5,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),
          Spacer(),
 
-         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,mainAxisSize: MainAxisSize.min,
+         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           mainAxisSize: MainAxisSize.min,
            crossAxisAlignment: CrossAxisAlignment.center,
            children: [
              IconButton(icon: Icon(Icons.done_all_outlined),onPressed: () {

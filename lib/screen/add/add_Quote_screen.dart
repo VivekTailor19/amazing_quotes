@@ -48,22 +48,23 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
                     border: Border.all(color:Color(0xff0A1172))),
               child: DropdownButton(
                   borderRadius: BorderRadius.circular(10),
+                  hint: Text("Select Category",style: TextStyle(color: Color(0xff0A1172),fontSize: 16),),
 
                   // dropdownColor: Colors.amber,
                   isExpanded: true,
                   icon: Icon(Icons.expand_more_rounded),
                   underline: Container(),
 
-                  value: control.selCategory.value,
+                  value: control.selCategory.value.isEmpty?null:control.selCategory.value,
                   items: control.categoryList.asMap().entries
                       .map((e) => DropdownMenuItem(
                       value: control.categoryList[e.key]['category'],
+
                       child: Text("${control.categoryList[e.key]['category']}",style: TextStyle(color: Color(0xff0A1172),fontSize: 16),),
                       alignment: Alignment.centerLeft))
                       .toList(),
                   onChanged: (value) {
                     control.selCategory.value = value as String;
-
                   },
               ),
             ),
