@@ -1,9 +1,9 @@
 
+import 'package:amazing_quotes/controller/quote_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotopia/controller/quote_controller.dart';
-import 'package:quotopia/model/quote_model.dart';
-import 'package:quotopia/utils/quote_db_helper.dart';
+
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,9 +46,40 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: Container(height: 25.h,width: 100.w,color: Colors.amber.shade300,),
+                Stack(
+                  children: [
+                    Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child:  CarouselSlider(
+                      items: control.imgList
+                          .map((e) => Container(
+                        height: 25.h,
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.w),
+                            color: Colors.amber,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    "$e"),
+                                fit: BoxFit.fill)),
+                      ))
+                          .toList(),
+                      options: CarouselOptions(
+
+                        autoPlay: true,
+                        scrollDirection: Axis.horizontal,
+                        viewportFraction: 1,
+                        height: 25.h,
+                        initialPage: control.currentSliderIndex.value,
+                        onPageChanged: (index, reason) {
+                          control.currentSliderIndex.value = index;
+                        },
+                      ),
+                    ),
+                  ),
+
+
+                  ],
                 ),
 
                 Container(height: 25.h,width:100.w,color: Colors.white,

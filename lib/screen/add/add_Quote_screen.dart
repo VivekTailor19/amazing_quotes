@@ -1,7 +1,8 @@
+import 'package:amazing_quotes/model/quote_model.dart';
+import 'package:amazing_quotes/utils/quote_db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotopia/model/quote_model.dart';
-import 'package:quotopia/utils/quote_db_helper.dart';
+
 import 'package:sizer/sizer.dart';
 
 import '../../controller/quote_controller.dart';
@@ -54,14 +55,15 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
                   underline: Container(),
 
                   value: control.selCategory.value,
-                  items: control.categories
+                  items: control.categoryList.asMap().entries
                       .map((e) => DropdownMenuItem(
-                      value: e,
-                      child: Text("${e}",style: TextStyle(color: Color(0xff0A1172),fontSize: 16),),
+                      value: control.categoryList[e.key]['category'],
+                      child: Text("${control.categoryList[e.key]['category']}",style: TextStyle(color: Color(0xff0A1172),fontSize: 16),),
                       alignment: Alignment.centerLeft))
                       .toList(),
                   onChanged: (value) {
                     control.selCategory.value = value as String;
+
                   },
               ),
             ),

@@ -1,6 +1,5 @@
+import 'package:amazing_quotes/utils/quote_db_helper.dart';
 import 'package:get/get.dart';
-import 'package:quotopia/model/quote_model.dart';
-import 'package:quotopia/utils/quote_db_helper.dart';
 
 
 class QuoteController extends GetxController
@@ -15,22 +14,18 @@ class QuoteController extends GetxController
  }
 
  RxString selCategory = "hii".obs;
- RxList categories = [].obs;
 
- void onlyReloadCategories()
- {
-  String temp = "";
-  List list = [];
-  for(int i = 0; i < categoryList.length  ; i++)
-   {
-     temp = categoryList[i]['category'] ;
-     list.add(temp);
-   }
-  categories.value = list;
-  print("categories   ===>>>>>>>>>>>>>>> ${categories.length}");
- }
+ List<String> imgList = [
+  "assets/images/slider (1).jpg",
+  "assets/images/slider (2).jpg",
+  "assets/images/slider (3).jpg",
+  "assets/images/slider (4).jpg",
+  "assets/images/slider (5).jpg",
+ ];
 
-  
+ RxInt currentSliderIndex = 0.obs;
+
+
 
 }
 

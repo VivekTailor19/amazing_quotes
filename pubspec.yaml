@@ -1,4 +1,4 @@
-name: quotopia
+name: amazing_quotes
 description: Amazing quotes
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,6 +40,7 @@ dependencies:
   sqflite: ^2.2.8+4
   path_provider: ^2.0.15
   google_fonts: ^5.1.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
