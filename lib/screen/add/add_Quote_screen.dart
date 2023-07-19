@@ -37,6 +37,7 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
 
 
                Obx(
+
               () =>     Container(
               height: 8.h,
               width: 100.w,
