@@ -113,6 +113,18 @@ class Quote_DB_Helper
   }
 
 
+  Future<List<Map>> fetchCategoryQuotes(String category)
+  async {
+    database = await checkDB();
+    String query = 'SELECT * FROM $dbCategoryTable WHERE category = "$category" ';
+    List<Map> list = await database!.rawQuery(query);
+    print("list ==== $list");
+    return list;
+  }
+
+
+
+
 
 
 

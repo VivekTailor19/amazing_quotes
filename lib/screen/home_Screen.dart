@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:amazing_quotes/controller/quote_controller.dart';
+import 'package:amazing_quotes/utils/quote_db_helper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:sizer/sizer.dart';
+
+import '../model/quote_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,11 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text("Quotes"),
           centerTitle: true,
 
-          leading: IconButton(icon: Icon(Icons.refresh_rounded), iconSize: 25,
+          leading: IconButton(icon: Icon(Icons.menu_rounded), iconSize: 25,
             onPressed: () async {
               // control.convertDATA();
-              // control.quoteList.map((e) async => await Quote_DB_Helper.quote_db_helper.insertInDB(
-              //     QuoteModel(category: e.category,quote: e.quote,fav: e.fav))).toList();
+              control.quoteList.map((e) async => await Quote_DB_Helper.quote_db_helper.insertQuote(
+                  QuoteModel(category: e.category,quote: e.quote,fav: e.fav))).toList();
 
             },),
 
@@ -118,11 +123,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisSpacing: 5
                                 ),
                                 itemBuilder: (context, index) {
+
+                                 // Random r = Random();
+                                  //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
+                                  List<Color> colorpalate = control.colorPaleteList[index] ;
+
                                   return GestureDetector(onTap: () {
+
+                                    control.filterQuotesAccordingToCategory(control.categoryList[index]['category']);
 
                                     Get.toNamed("/viewCategory",arguments: control.categoryList[index]['category'] );
                                   },
-                                  child: SubTitleBox(control.categoryList[index]['category']));
+                                  child: SubTitleBox(
+                                      subtitle: control.categoryList[index]['category'],
+                                      colorList: colorpalate));
 
                                 },),
                         ),
@@ -161,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp),),
       );
 
-  Widget SubTitleBox(String subtitle) {
+  Widget SubTitleBox({subtitle,colorList}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2.5),
       height: 9.h,
@@ -170,7 +184,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Text("$subtitle", style: TextStyle(
           fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.white),),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4.w), color: Colors.redAccent),
+          borderRadius: BorderRadius.circular(4.w),
+          gradient:LinearGradient(colors: colorList),
+          color: Colors.redAccent),
     );
   }
 }
