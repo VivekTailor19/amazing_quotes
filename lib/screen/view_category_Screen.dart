@@ -24,6 +24,7 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
   Widget build(BuildContext context) {
 
     return SafeArea(
+
       child: Scaffold(
 
         appBar: AppBar(
@@ -34,7 +35,7 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
 
         body: ListView.builder(
            padding: EdgeInsets.only(left:3.w,right:3.w,top: 5.w),
-          itemCount: 4,
+          itemCount: 1,
           itemBuilder: (context, index) {
           return QuoteListTile(
               quote: control.filterData[index]['quote'],
@@ -57,9 +58,9 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
      child: Column(
        children: [
          SizedBox(height: 1.h,),
-         Text("$quote",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),maxLines: 5,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),
+         Text("quote",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),maxLines: 5,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),
          Spacer(),
-         Text("- $author",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),textAlign: TextAlign.center,),
+         Text("- author",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),textAlign: TextAlign.center,),
          SizedBox(height: 1.5.h,),
 
          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,

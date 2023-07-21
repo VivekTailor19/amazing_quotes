@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.white70,
+      child: Scaffold(
         appBar: AppBar(
           title: Text("Quotes"),
           centerTitle: true,
