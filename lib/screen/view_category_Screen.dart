@@ -12,7 +12,7 @@ class View_Category_Screen extends StatefulWidget {
 
 class _View_Category_ScreenState extends State<View_Category_Screen> {
 
-  String title = ""
+  String title = "";
   String subdata = "";
   String what  = "";
   Map mapDATA = {};

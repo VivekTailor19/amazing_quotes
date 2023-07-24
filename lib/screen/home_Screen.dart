@@ -31,6 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+
+            control.loadCategoryDB();
+            Get.toNamed("/add");
+
+          },
+          child: Icon(Icons.add_outlined)
+        ),
         appBar: AppBar(
           title: Text("Quotes"),
           centerTitle: true,
@@ -40,8 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           actions: [
             IconButton(onPressed: () {
-              control.loadCategoryDB();
-              Get.toNamed("/add");
+
             }, icon: Icon(Icons.add_outlined))
           ],
         ),
@@ -87,16 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
 
-                Container(height: 25.h, width: 100.w, color: Colors.white,
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
 
-                    children: [
-                      TitleTab("Most Popular"),
-
-                    ],
-                  ),
-                ),
 
                 SizedBox(height: 5,),
                 Container(height: 25.h, width: 100.w, color: Colors.white,
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: (context, index) {
                                  // Random r = Random();
                                   //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
-                                  List<Color> colorpalate = control.colorPaleteList[index] ;
+                                  List<Color> colorpalate = control.colorPaleteList[index+4] ;
 
                                   return GestureDetector(onTap: () {
                                     control.filterQuotesAccordingToCategory(control.categoryList[index]['category']);
