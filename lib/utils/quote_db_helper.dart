@@ -53,6 +53,7 @@ class Quote_DB_Helper
   Future<void> insertQuote(QuoteModel model)
   async {
     database = await checkDB();
+
     await database!.insert(dbQuoteTable,
         {
           "category":model.category,
@@ -61,6 +62,8 @@ class Quote_DB_Helper
           'fav':model.fav
         }
     );
+
+    print("insert in DB");
   }
 
 
@@ -99,6 +102,21 @@ class Quote_DB_Helper
   async {
     database = await checkDB();
     database!.update(dbCategoryTable,{'category':category}, where: "id=?",whereArgs: [id]);
+
+    // List<QuoteModel> tempList = list;
+    // QuoteModel model = QuoteModel();
+    // for(int  i = 0 ; i<tempList.length ;  i++ )
+    //   {
+    //     model = tempList[i];
+    //
+    //     database!.update(dbQuoteTable,{
+    //       "category":model.category,
+    //       "author":model.author,
+    //       "quote": model.quote,
+    //       'fav':model.fav
+    //     }, where: "id=?",whereArgs: [model.id]);
+    //   }
+
   }
 
   Future<void> updateInQuoteTABLE(QuoteModel model)
@@ -113,13 +131,44 @@ class Quote_DB_Helper
   }
 
 
-  Future<List<Map>> fetchCategoryQuotes(String category)
+  Future<List<Map>> fetchDATAFromDatabase({category,author})
   async {
     database = await checkDB();
-    String query = 'SELECT * FROM $dbCategoryTable WHERE category = "$category" ';
+    String query = "";
+
+    if(category != null && author == null)
+      {
+        print("-----------category selected...........");
+        query = 'SELECT * FROM $dbQuoteTable WHERE category = "$category" ';
+      }
+    else if(author != null && category == null)
+      {
+        print("-----------author selected...........");
+        query = 'SELECT * FROM $dbQuoteTable WHERE author = "$author" ';
+      }
+
     List<Map> list = await database!.rawQuery(query);
     print("list ==== $list");
     return list;
+  }
+
+  Future<List> fetchDISTINCTAuthors()
+  async {
+    database = await checkDB();
+    String query = 'SELECT DISTINCT author FROM $dbQuoteTable ' ;
+    List list = await database!.rawQuery(query);
+    print("list ==== $list");
+    return list;
+
+  }
+  //SELECT DISTINCT Country FROM Customers;
+
+
+  Future<void> deleteQuotes(int id)
+  async {
+    print("============== pressed delete--------------- ${id}");
+    database = await checkDB();
+    database!.delete(dbQuoteTable,where: "id=?" ,whereArgs:[id] );
   }
 
 

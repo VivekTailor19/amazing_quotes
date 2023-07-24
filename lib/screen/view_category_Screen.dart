@@ -12,11 +12,25 @@ class View_Category_Screen extends StatefulWidget {
 
 class _View_Category_ScreenState extends State<View_Category_Screen> {
 
-  String title = "";
+  String title = ""
+  String subdata = "";
+  String what  = "";
+  Map mapDATA = {};
   QuoteController control = Get.put(QuoteController());
   @override
   void initState() {
     super.initState();
+    mapDATA = Get.arguments;
+    what  = mapDATA['what'];
+    if(what  == "category")
+      {
+        subdata = "category";
+      }
+    else
+      {
+        subdata = "author";
+      }
+    title = mapDATA["value"];
     title = Get.arguments;
   }
 
@@ -35,8 +49,10 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
 
         body: ListView.builder(
            padding: EdgeInsets.only(left:3.w,right:3.w,top: 5.w),
-          itemCount: 1,
+          itemCount: control.filterData.length,
           itemBuilder: (context, index) {
+
+             // return Text("${control.filterData.length}");
           return QuoteListTile(
               quote: control.filterData[index]['quote'],
               author: control.filterData[index]['author']);
@@ -53,14 +69,20 @@ class _View_Category_ScreenState extends State<View_Category_Screen> {
      height: 25.h,
      width: 100.w,
      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.w),
+
        border: Border.all(color: Colors.black12)
      ),
      child: Column(
        children: [
-         SizedBox(height: 1.h,),
-         Text("quote",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),maxLines: 5,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),
+         SizedBox(height: 2.h,),
+         Text("$quote",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 13.sp),maxLines: 5,overflow: TextOverflow.ellipsis,textAlign: TextAlign.center,),
          Spacer(),
-         Text("- author",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),textAlign: TextAlign.center,),
+         Row(mainAxisAlignment: MainAxisAlignment.end,
+           children: [
+             Text("- $author",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15.sp),textAlign: TextAlign.center,),
+             SizedBox(width: 5.w,),
+           ],
+         ),
          SizedBox(height: 1.5.h,),
 
          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,

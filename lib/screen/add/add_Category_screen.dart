@@ -28,6 +28,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
         SizedBox(height: 1.5.h,),
         GestureDetector(
           onTap: () {
+
             Quote_DB_Helper.quote_db_helper.insertCategory(tcategory.text);
             control.loadCategoryDB();
             tcategory.clear();
@@ -69,15 +70,20 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
 
 
                               IconButton(onPressed: () async {
+
+
+
                                 await Quote_DB_Helper.quote_db_helper.updateInCategoryTABLE(
                                     id: control.categoryList[index]['id'],
-                                    category: tcategory.text);
+                                    category: tcategory.text,
+                                   // list: control.quoteList
+                                );
 
                                 control.loadCategoryDB();
                                 tcategory.clear();
                                 Get.back();
 
-                              }, icon: Icon(Icons.security_update_good_rounded),iconSize: 30.sp,color: Colors.green,)
+                              }, icon: Icon(Icons.check),iconSize: 30.sp,color: Colors.green,)
                             ],
                           )
                         ],

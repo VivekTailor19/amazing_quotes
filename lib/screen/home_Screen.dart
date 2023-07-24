@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     control.loadCategoryDB();
+    control.fetchAuthorList();
   }
 
   QuoteController control = Get.put(QuoteController());
@@ -35,15 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
           centerTitle: true,
 
           leading: IconButton(icon: Icon(Icons.menu_rounded), iconSize: 25,
-            onPressed: () async {
-              // control.convertDATA();
-              control.quoteList.map((e) async => await Quote_DB_Helper.quote_db_helper.insertQuote(
-                  QuoteModel(category: e.category,quote: e.quote,fav: e.fav))).toList();
-
-            },),
+            onPressed: ()  {},),
 
           actions: [
             IconButton(onPressed: () {
+              control.loadCategoryDB();
               Get.toNamed("/add");
             }, icon: Icon(Icons.add_outlined))
           ],
@@ -63,9 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             .map((e) =>
                             Container(
                               height: 25.h,
-                              width: 100.w,
+                              width: 90.w,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5.w),
+                                  borderRadius: BorderRadius.circular(8.w),
                                   color: Colors.amber,
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -86,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-
 
                   ],
                 ),
@@ -123,16 +119,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     crossAxisSpacing: 5
                                 ),
                                 itemBuilder: (context, index) {
-
                                  // Random r = Random();
                                   //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
                                   List<Color> colorpalate = control.colorPaleteList[index] ;
 
                                   return GestureDetector(onTap: () {
-
                                     control.filterQuotesAccordingToCategory(control.categoryList[index]['category']);
-
-                                    Get.toNamed("/viewCategory",arguments: control.categoryList[index]['category'] );
+                                    Get.toNamed("/viewCategory",arguments: {
+                                      "what":"category",
+                                      "value":control.categoryList[index]['category']
+                                    }
+                                     );
                                   },
                                   child: SubTitleBox(
                                       subtitle: control.categoryList[index]['category'],
@@ -146,12 +143,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 SizedBox(height: 5,),
-                Container(height: 25.h, width: 100.w, color: Colors.white,
+                Container(height: 35.h, width: 100.w, color: Colors.white,
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
 
                     children: [
                       TitleTab("Quotes by Author"),
+                      control.authorList.length != null
+                          ? Expanded(
+                        child:
+                              GridView.builder(
+
+                                itemCount: control.authorList.length,
+                                scrollDirection: Axis.horizontal,
+                                padding: EdgeInsets.all(2.5),
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisExtent: 46.w,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 5
+                                ),
+                                itemBuilder: (context, index) {
+                                  // Random r = Random();
+                                  //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
+                                  List<Color> colorpalate = control.colorPaleteList[index] ;
+
+                                  return GestureDetector(onTap: () {
+                                    // control.filterQuotesAccordingToAuthor(control.authorList[index]);
+                                    // Get.toNamed("/viewCategory",arguments: control.authorList[index] );
+                                  },
+                                      child: SubTitleBox(
+                                          subtitle: control.authorList[index],
+                                          colorList: colorpalate));
+
+                                },),
+
+                      )
+                          : Container()
+
+
 
                     ],
                   ),
