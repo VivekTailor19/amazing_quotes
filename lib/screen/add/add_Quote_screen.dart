@@ -39,12 +39,12 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
               padding: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color(0xff0A1172))),
+                  border: Border.all(color: Color(0xff015B8A))),
               child: DropdownButton(
                 borderRadius: BorderRadius.circular(10),
                 hint: Text(
                   "Select Category",
-                  style: TextStyle(color: Color(0xff0A1172), fontSize: 16),
+                  style: TextStyle(color: Color(0xff015B8A), fontSize: 16),
                 ),
 
                 // dropdownColor: Colors.amber,
@@ -63,7 +63,7 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
                         child: Text(
                           "${control.categoryList[e.key]['category']}",
                           style:
-                              TextStyle(color: Color(0xff0A1172), fontSize: 16),
+                              TextStyle(color: Color(0xff015B8A), fontSize: 16),
                         ),
                         alignment: Alignment.centerLeft))
                     .toList(),
@@ -95,7 +95,7 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
               width: 150,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color(0xff0A1172)),
+                  color: Color(0xff015B8A),),
               alignment: Alignment.center,
               child: Text(
                 "Add Quote",
@@ -125,13 +125,13 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             label: Text(
               "Enter $hint",
-              style: TextStyle(color: Color(0xff0A1172)),
+              style: TextStyle(color: Color(0xff015B8A)),
             ),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xff0A1172), width: 1.5),
+                borderSide: BorderSide(color: Color(0xff015B8A), width: 1.5),
                 borderRadius: BorderRadius.circular(10)),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0x550A1172), width: 1),
+                borderSide: BorderSide(color: Color(0x55015B8A), width: 1),
                 borderRadius: BorderRadius.circular(10)),
             enabled: true),
       ),

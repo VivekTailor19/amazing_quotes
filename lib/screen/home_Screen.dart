@@ -18,12 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    control.loadCategoryDB();
-    control.fetchAuthorList();
-  }
+
 
   QuoteController control = Get.put(QuoteController());
 
@@ -33,26 +28,22 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
 
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xff015B8A),
           onPressed: () {
 
-            control.loadCategoryDB();
-            Get.toNamed("/add");
+             Get.toNamed("/add");
 
           },
           child: Icon(Icons.add_outlined)
         ),
         appBar: AppBar(
+          backgroundColor:  Color(0xff015B8A),
           title: Text("Quotes"),
           centerTitle: true,
 
-          leading: IconButton(icon: Icon(Icons.menu_rounded), iconSize: 25,
-            onPressed: ()  {},),
+          // leading: IconButton(icon: Icon(Icons.menu_rounded), iconSize: 25,
+          //   onPressed: ()  {},),
 
-          actions: [
-            IconButton(onPressed: () {
-
-            }, icon: Icon(Icons.add_outlined))
-          ],
         ),
 
         body: Padding(
@@ -148,37 +139,40 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     children: [
                       TitleTab("Quotes by Author"),
-                      control.authorList.length != null
-                          ? Expanded(
+                           Expanded(
                         child:
-                              GridView.builder(
+                              Obx(
+                                () =>  GridView.builder(
+                                  itemCount: control.authorList.length,
+                                  scrollDirection: Axis.horizontal,
+                                  padding: EdgeInsets.all(2.5),
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      mainAxisExtent: 46.w,
+                                      mainAxisSpacing: 10,
+                                      crossAxisSpacing: 5
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    // Random r = Random();
+                                    //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
+                                    List<Color> colorpalate = control.colorPaleteList[index] ;
 
-                                itemCount: control.authorList.length,
-                                scrollDirection: Axis.horizontal,
-                                padding: EdgeInsets.all(2.5),
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    mainAxisExtent: 46.w,
-                                    mainAxisSpacing: 10,
-                                    crossAxisSpacing: 5
-                                ),
-                                itemBuilder: (context, index) {
-                                  // Random r = Random();
-                                  //int colorBookIndex = r.nextInt(control.colorPaleteList.length);
-                                  List<Color> colorpalate = control.colorPaleteList[index] ;
+                                    return GestureDetector(onTap: () {
+                                      control.filterQuotesAccordingToAuthor(control.authorList[index]);
+                                      Get.toNamed("/viewCategory",arguments: {
+                                      "what": "author",
+                                      "value": control.authorList[index]
+                                       }
+                                      );
+                                    },
+                                        child: SubTitleBox(
+                                            subtitle: control.authorList[index],
+                                            colorList: colorpalate));
 
-                                  return GestureDetector(onTap: () {
-                                    // control.filterQuotesAccordingToAuthor(control.authorList[index]);
-                                    // Get.toNamed("/viewCategory",arguments: control.authorList[index] );
-                                  },
-                                      child: SubTitleBox(
-                                          subtitle: control.authorList[index],
-                                          colorList: colorpalate));
-
-                                },),
+                                  },),
+                              ),
 
                       )
-                          : Container()
 
 
 

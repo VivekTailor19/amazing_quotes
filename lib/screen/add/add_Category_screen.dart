@@ -34,7 +34,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
             tcategory.clear();
           },
           child: Container(height: 60,width: 150,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff0A1172)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff015B8A),),
             alignment: Alignment.center,
             child: Text("Add Category",style: TextStyle(fontSize: 15.sp,color: Colors.white,fontWeight: FontWeight.w400),),
           ),
@@ -90,7 +90,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
                       ));
                     },
                     child: Container(height: 60,width: 100.w,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(3.w),color: Colors.indigo.shade400),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(3.w),color: Color(0x99015B8A),),
                       child: Row(children: [
                         SizedBox(width: 10,),
                         Text("${index + 1}",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Colors.white),),
@@ -117,13 +117,13 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
     return Padding(
       padding:  EdgeInsets.all(10),
       child: TextField(
-        style: TextStyle(color: Color(0xff0A1172),fontSize: 16),
+        style: TextStyle(color: Color(0xff015B8A),fontSize: 16),
         keyboardType: kboard,
         controller: controller,
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            label: Text("Enter $hint",style: TextStyle(color: Color(0xff0A1172)),),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff0A1172),width: 1.5),borderRadius: BorderRadius.circular(10)),
+            label: Text("Enter $hint",style: TextStyle(color: Color(0xff015B8A)),),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff015B8A),width: 1.5),borderRadius: BorderRadius.circular(10)),
             enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1),borderRadius: BorderRadius.circular(10)),
             enabled: true
 
