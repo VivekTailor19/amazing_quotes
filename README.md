@@ -1,16 +1,18 @@
 # amazing_quotes
+## quotes app using sqflite 
 
-A new Flutter project.
+<br>
+https://github.com/VivekTailor19/amazing_quotes/assets/119835214/fba2e75d-2eca-4222-a2d5-180bb3c8bc0b
+<br>
 
-## Getting Started
+<p>
+  
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/46bcc0f6-a54b-43b3-b55d-0d06352251a8" height = "50%" width = "30%">
 
-This project is a starting point for a Flutter application.
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/2fa0dab1-a048-4bb4-8bd4-75442f8785f6" height = "50%" width = "30%">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+  
+</p>
