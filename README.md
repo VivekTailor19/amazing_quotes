@@ -1,9 +1,9 @@
 # amazing_quotes
 ## quotes app using sqflite 
 
-<br>
+
 https://github.com/VivekTailor19/amazing_quotes/assets/119835214/fba2e75d-2eca-4222-a2d5-180bb3c8bc0b
-<br>
+
 
 <p>
   
