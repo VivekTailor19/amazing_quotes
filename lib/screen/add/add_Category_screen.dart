@@ -88,6 +88,7 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
                           )
                         ],
                       ));
+
                     },
                     child: Container(height: 60,width: 100.w,
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(3.w),color: Color(0x99015B8A),),
@@ -113,23 +114,25 @@ class _Add_Category_ScreenState extends State<Add_Category_Screen> {
     );
   }
 
-  Padding CustomTextField({controller,hint,kboard}) {
-    return Padding(
-      padding:  EdgeInsets.all(10),
-      child: TextField(
-        style: TextStyle(color: Color(0xff015B8A),fontSize: 16),
-        keyboardType: kboard,
-        controller: controller,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-            label: Text("Enter $hint",style: TextStyle(color: Color(0xff015B8A)),),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff015B8A),width: 1.5),borderRadius: BorderRadius.circular(10)),
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1),borderRadius: BorderRadius.circular(10)),
-            enabled: true
 
-        ),
+
+}
+
+Padding CustomTextField({controller,hint,kboard}) {
+  return Padding(
+    padding:  EdgeInsets.all(10),
+    child: TextField(
+      style: TextStyle(color: Color(0xff015B8A),fontSize: 16),
+      keyboardType: kboard,
+      controller: controller,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          label: Text("Enter $hint",style: TextStyle(color: Color(0xff015B8A)),),
+          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff015B8A),width: 1.5),borderRadius: BorderRadius.circular(10)),
+          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1),borderRadius: BorderRadius.circular(10)),
+          enabled: true
+
       ),
-    );
-  }
-
+    ),
+  );
 }

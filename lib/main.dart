@@ -1,4 +1,4 @@
-import 'package:amazing_quotes/screen/view_category_Screen.dart';
+import 'package:amazing_quotes/screen/view_fliterQuote_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ void main() {
           "/":(p0) => SplashScreen(),
           "/home": (p0) => HomeScreen(),
           "/add":(p0) => Add_Screen(),
-           "/viewCategory":(p0) => View_Category_Screen(),
+           "/viewCategory":(p0) => View_FilteredQuote_Screen(),
         },
       ),
     ),

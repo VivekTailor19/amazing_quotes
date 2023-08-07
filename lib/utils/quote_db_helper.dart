@@ -157,7 +157,7 @@ class Quote_DB_Helper
     database = await checkDB();
     String query = 'SELECT DISTINCT author FROM $dbQuoteTable ' ;
     List list = await database!.rawQuery(query);
-    print("list ==== $list");
+    print("authorlist ==== $list");
     return list;
 
   }

@@ -85,6 +85,7 @@ class _Add_Quote_ScreenState extends State<Add_Quote_Screen> {
                   fav: 'No');
               Quote_DB_Helper.quote_db_helper.insertQuote(model);
               control.loadCategoryDB();
+              control.selCategory.value="";
               tquote.clear();
 
               tauthor.clear();

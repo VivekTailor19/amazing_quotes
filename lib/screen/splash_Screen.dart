@@ -18,13 +18,19 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
+    if(control.defaultPreloaded == false)
+      {
+        control.uploadDefaultDataInDatabase();
+        control.defaultPreloaded.value = true;
+      }
+
     control.loadCategoryDB();
 
   }
   @override
   Widget build(BuildContext context) {
 
-    Future.delayed(Duration(seconds: 2),() => Get.offAllNamed("/home"),);
+    Future.delayed(Duration(seconds: 4),() => Get.offAllNamed("/home"),);
 
     return SafeArea(
       child: Scaffold(
