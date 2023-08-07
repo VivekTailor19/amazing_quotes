@@ -1,19 +1,16 @@
 # amazing_quotes
 ## quotes app using sqflite 
 
-
-https://github.com/VivekTailor19/amazing_quotes/assets/119835214/fba2e75d-2eca-4222-a2d5-180bb3c8bc0b
-
+https://github.com/VivekTailor19/amazing_quotes/assets/119835214/3ced3158-7860-4d7d-aeed-030373cde970
 
 <p>
-  
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/46bcc0f6-a54b-43b3-b55d-0d06352251a8" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/2fa0dab1-a048-4bb4-8bd4-75442f8785f6" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/ccd05332-cdfa-4294-90a4-996fd1f8c28c" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/4ec3816e-9dae-4fd2-a6cc-b6bdfb9f1b25" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/132fbe52-86d3-4b26-84b5-1ed536a5a42c" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/78cc0db7-ed90-4761-b24a-c77c397790cb" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/e27a8ecf-e938-4eab-a91c-d09c494cff95" height = 50% width = 30%>
-<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/e4563bb6-665f-477b-83f3-bf115fd91e51" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/f23dd01b-394c-4a43-a4b4-672ba0e328dc" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/2f0369c5-2ce3-4fc6-bb71-9e2edfc58e88" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/a18c3c25-04be-453a-afaa-2df24f8a48f8" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/7737cf1f-ea45-44bc-ae68-168c9212aad1" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/7f18b1d2-0a48-447c-8be7-d948fca64c4f" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/001a3bf8-fd0a-488d-a71a-e755271d2dfc" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/dd86d1fc-c472-48a5-a672-e9bdb1da7cf0" height = 50% width = 30%>
+<img src = "https://github.com/VivekTailor19/amazing_quotes/assets/119835214/5f1d79c8-b7fc-49fc-9d74-de22f87127b6" height = 50% width = 30%>
 
 </p>
