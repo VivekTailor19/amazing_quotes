@@ -14,18 +14,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
   QuoteController control = Get.put(QuoteController());
 
+  Future<void> gotDataDb()
+  async {
+    await control.loadCategoryDB();
+    if(control.categoryList.isEmpty)
+    {
+      control.uploadDefaultDataInDatabase();
+      await control.loadCategoryDB();
+    }
+
+  }
   @override
   void initState() {
     super.initState();
-
-    if(control.defaultPreloaded == false)
-      {
-        control.uploadDefaultDataInDatabase();
-        control.defaultPreloaded.value = true;
-      }
-
-    control.loadCategoryDB();
-
+    gotDataDb();
   }
   @override
   Widget build(BuildContext context) {

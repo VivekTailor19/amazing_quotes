@@ -20,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   QuoteController control = Get.put(QuoteController());
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

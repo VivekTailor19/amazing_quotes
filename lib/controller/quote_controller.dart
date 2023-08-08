@@ -119,7 +119,7 @@ class QuoteController extends GetxController
 
 
 
- RxBool defaultPreloaded = false.obs;
+
 
  void uploadDefaultDataInDatabase()
  {
